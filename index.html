@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>QR Code generator on your browser</title>
+        <script src="jquery-3.7.1.min.js"></script>
+        <script src="jquery-qrcode.min.js"></script>
+        <style>
+            body {
+                margin: auto;
+                padding-top: 2%;
+                max-width: 1000px;
+                text-align: center;
+            }
+            #qrcode {
+                padding-top: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <div>To generate a QR Code, add or modify the "s" parameter in the URL: <a href="?s=this is an example">like this</a>.</div>
+        <div id="qrcode"></div>
+        <div id="text"></div>
+        <script type="text/javascript">
+            let searchParams = new URLSearchParams(window.location.search)
+            searchParams.has('s') 
+            let text = searchParams.get('s')
+            $("#qrcode").qrcode({
+                text: text
+            });
+            $("#text").text(text);
+        </script>
+    </body>
+</html>
